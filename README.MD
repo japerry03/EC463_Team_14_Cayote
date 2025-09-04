@@ -1,1 +1,1 @@
-EC463 Team 14: Cayote-Deer hunter
+EC463 Team 14: Cayote
