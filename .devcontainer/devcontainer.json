@@ -1,0 +1,12 @@
+{
+  "name": "component-testing",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+  "containerEnv": {
+    "SUPABASE_URL": "postgresql://postgres:qb$HEa4%OqMDFIHF&hN3xkA6@db.krpjlhrtcqexbdpahjyq.supabase.co:5432/postgres",
+    "SUPABASE_ANON_KEY": "sb_publishable_aNP1H7y-3DZElK2SqhHWGg_mHSD_9RK",
+    "SUPABASE_SERVICE_ROLE_KEY": "sb_secret_5porlMQw_YP7NZAOeb9RHg_JtiU3lcZ",
+    "MQTT_BROKER_URL": "6745aa058d8d4607a9ac29fb232b7e25.s1.eu.hivemq.cloud:8884/mqtt",
+    "MQTT_USERNAME": "testing",
+    "MQTT_PASSWORD": "N2aYQYEl3xPTmYWF8T2Op50f0CvOi5Nfe3WLZPe0JMMRrgNsmEpg6JMqTOlD"
+  }
+}
