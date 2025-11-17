@@ -11,12 +11,8 @@ const int b1 = 3;
 const int b2 = 4;
 
 void setup() {
-  pinMode(b0, INPUT);
-  pinMode(b1, INPUT);
-  pinMode(b2, INPUT);
 
-  Serial.begin(9600);
-  Serial.println("connected");
+  Serial.begin(115200);
   
   motor.attach(motorPin);  // Attach the motor signal pin
   delay(2000);
@@ -25,36 +21,36 @@ void setup() {
 }
 
 void loop() {
-  int cmd = readCommand();
+  if (Serial.available() > 0){
+    char cmd = Serial.read();
 
-  Serial.println("looping");
-
-  Serial.print("cmd: "); Serial.println(cmd);
-
-  switch (cmd) {
-    case 1: drive(); Serial.println("drive"); break;
-    case 2: stop(); Serial.println("stop"); break;
-    case 3: left(); Serial.println("left"); break;
-    case 4: right(); Serial.println("right"); break;
-    case 5: straight(); Serial.println("straight"); break;
-    case 6: emergencyStop(); Serial.println("E-brake"); break;
-    default: break;
+    switch(cmd){
+      case 'd': //Drive
+        drive(); 
+        break;
+      case 's': //Stop
+        stop(); 
+        break;
+      case 'e': //Emergencystop
+        emergencyStop(); 
+        break;
+      case 'r': //Right
+        right(); 
+        break;
+      case 'l': //Left
+        left(); 
+        break;
+      case 't': //sTraight
+        straight(); 
+        break;
+      case 'v': //reVerse
+        reverse(); 
+        break;
+      case 'o': //reversestOp
+        rstop(); 
+        break;
+    }
   }
-
-  delay(1000);
-}
-
-int readCommand() {
-  int bit0 = digitalRead(b0);
-  Serial.println(bit0);
-  int bit1 = digitalRead(b1);
-  Serial.println(bit1);
-  int bit2 = digitalRead(b2);
-  Serial.println(bit2);
-
-  int cmd = (bit2 << 2) | (bit1 << 1) | bit0; // 3-bit value
-
-  return cmd;
 }
 
 //motor commands
@@ -105,4 +101,28 @@ void emergencyStop(){
   delay(500);
 
   esc.writeMicroseconds(1500);
+}
+
+void reverse(){
+  esc.writeMicroseconds(1600); //start motor
+
+  delay(1000);
+
+  esc.writeMicroseconds(1650); //midSpeed
+
+  delay(1000);
+
+  esc.writeMicroseconds(1700); //midSpeed
+}
+
+void rstop(){
+  esc.writeMicroseconds(1650); //start motors
+
+  delay(1000);
+
+  esc.writeMicroseconds(1600); //midSpeed
+
+  delay(1000);
+
+  esc.writeMicroseconds(1500); //stopped
 }

@@ -1,6 +1,11 @@
+// filepath: /workspaces/EC463_Team_14_Cayote/.devcontainer/devcontainer.json
 {
   "name": "component-testing",
   "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {}
+  },
+  "postCreateCommand": "sudo apt update && sudo apt install -y python3-paho-mqtt python3-pandas python3-matplotlib",
   "containerEnv": {
     "SUPABASE_URL": "postgresql://postgres:qb$HEa4%OqMDFIHF&hN3xkA6@db.krpjlhrtcqexbdpahjyq.supabase.co:5432/postgres",
     "SUPABASE_ANON_KEY": "sb_publishable_aNP1H7y-3DZElK2SqhHWGg_mHSD_9RK",
