@@ -6,10 +6,6 @@ Servo motor;  // Create a Servo object to control the motor
 int motorPin = 9;  // PWM signal connected to the white wire
 
 // Command input pins from Jetsons
-const int b0 = 2;
-const int b1 = 3;
-const int b2 = 4;
-
 void setup() {
 
   Serial.begin(115200);
