@@ -1,9 +1,9 @@
 #include <Servo.h>
 Servo esc;
-const int escPin = 11;
+const int escPin = 3;
 
 Servo motor;  // Create a Servo object to control the motor
-int motorPin = 9;  // PWM signal connected to the white wire
+int motorPin = 2;  // PWM signal connected to the white wire
 
 // Command input pins from Jetsons
 void setup() {
@@ -36,7 +36,7 @@ void loop() {
       case 'l': //Left
         left(); 
         break;
-      case 't': //sTraight
+      case 'f': //Forward
         straight(); 
         break;
       case 'v': //reVerse
@@ -44,6 +44,9 @@ void loop() {
         break;
       case 'o': //reversestOp
         rstop(); 
+        break;
+      case 'b': //backward
+        rStraight();
         break;
     }
   }
@@ -84,7 +87,11 @@ void right(){
 }
 
 void straight(){
-  motor.writeMicroseconds(1500);
+  motor.writeMicroseconds(1460);
+}
+
+void rStraight(){
+  motor.writeMicroseconds(1520);
 }
 
 void emergencyStop(){
