@@ -1,0 +1,20 @@
+#/etc/cloudflared/config.yml 
+tunnel: 7c9d3113-3e59-42e3-98af-8471be4ba4e0     
+# "I am Tunnel ID f2d4..." (My Identity)
+
+credentials-file: /etc/cloudflared/[FIND ON LOCAL MACHINE].json 
+# "Here is my password/certificate proving I own this tunnel."
+
+protocol: quic
+
+ingress: 
+  # THE RECEPTIONIST RULES:
+  
+  - hostname: robot.zhakhangir.dev
+    service: http://localhost:1984
+    # Rule 1: If traffic is for 'robot.zhakhangir.dev',
+    # send it to the Go2RTC web server running on port 1984.
+
+  - service: http_status:404
+    # Rule 2 (Catch-all): If traffic comes for any OTHER name,
+    # show them a 404 error page. (This is required by Cloudflare).

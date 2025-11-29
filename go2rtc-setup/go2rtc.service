@@ -1,0 +1,13 @@
+#/etc/systemd/system/go2rtc.service
+[Unit]
+Description=Go2RTC Media Server
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/local/bin/go2rtc -config /etc/go2rtc.yaml
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
