@@ -1,13 +1,14 @@
 #/etc/go2rtc.yaml
 streams:
-  robot_yolo: 
-    - exec:ffmpeg -hide_banner -nostats -fflags nobuffer -flags low_delay -f rawvideo -pixel_format bgr24 -video_size 640x480 -framerate 15 -i /tmp/pipe_yolo -c:v libx264 -g 30 -preset ultrafast -tune zerolatency -b:v 700k -threads 2 -f h264 -
+  robot_yolo:
+    - exec:ffmpeg -hide_banner -nostats -fflags nobuffer -flags low_delay -f rawvideo -pixel_format bgr24 -video_size 640x480 -framerate 15 -i /tmp/pipe_yolo -c:v libx264 -g 30 -preset ultrafast -tune zerolatency -pix_fmt yuv420p -profile:v baseline -level 3.0 -b:v 700k -threads 2 -f h264 -
 
   robot_raw:
-    - exec:ffmpeg -hide_banner -nostats -fflags nobuffer -flags low_delay -f rawvideo -pixel_format bgr24 -video_size 640x480 -framerate 15 -i /tmp/pipe_raw -c:v libx264 -g 30 -preset ultrafast -tune zerolatency -b:v 700k -threads 2 -f h264 -
+    - exec:ffmpeg -hide_banner -nostats -fflags nobuffer -flags low_delay -f rawvideo -pixel_format bgr24 -video_size 640x480 -framerate 15 -i /tmp/pipe_raw -c:v libx264 -g 30 -preset ultrafast -tune zerolatency -pix_fmt yuv420p -profile:v baseline -level 3.0 -b:v 700k -threads 2 -f h264 -
 
 api:
   listen: ":1984"
 
 rtsp:
   listen: ":8554"
+
